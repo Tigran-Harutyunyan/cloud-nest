@@ -31,7 +31,7 @@ interface CardProps {
 
 const props = defineProps<CardProps>();
 
-const emails = ref<string[]>(props.file.users || []);
+const emails = ref<string[]>([...props.file.users]);
 const name = ref<string>();
 
 const state = reactive({
@@ -102,17 +102,17 @@ const handleAction = async () => {
       };
       break;
 
-    case "share":
+    case "share": 
       if (state.newEmail && isValidEmail(state.newEmail)) {
-        if (!emails.value.includes(state.newEmail))
+        if (!emails.value.includes(state.newEmail)) { 
           emails.value.push(state.newEmail);
+        }
       } else {
         toast.error(`${state.newEmail} is not a valid email`);
         return;
       }
       payload = { ...payload, emails: emails.value };
       break;
-
     case "delete":
       payload = { ...payload, bucketFileId: props.file.bucketFileId };
       break;
