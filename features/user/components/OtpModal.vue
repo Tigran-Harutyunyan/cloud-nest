@@ -54,7 +54,6 @@ const handleResendOtp = async () => {
       method: "POST",
       body: { email: props.email },
     });
-    debugger;
 
     if (sessionId) navigateTo("/");
   } catch (error) {
