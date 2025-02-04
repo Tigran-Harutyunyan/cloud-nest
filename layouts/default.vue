@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Sidebar from "@/components/Sidebar.vue";
-import Header from "@/components/Header.vue";
-import MobileNavigation from "@/components/MobileNavigation.vue";
+import Sidebar from "@/components/layout/Sidebar.vue";
+import Header from "@/components/layout/Header.vue";
+import MobileNavigation from "@/components/layout/MobileNavigation.vue";
 
 const { data: currentUser } = useFetch("/api/user");
 
