@@ -15,7 +15,6 @@ const results = ref<Models.Document[]>([]);
 const showResults = ref(false);
 const isLoading = ref(false);
 
-const { modifyQueryParam } = useModifyQueryParam();
 const DEBOUNCE_TIMEOUT = 500;
 
 onClickOutside(target, () => {
@@ -23,8 +22,6 @@ onClickOutside(target, () => {
 });
 
 const debouncedFn = useDebounceFn(async () => {
-  modifyQueryParam(route.params.type as string, "search", search.value);
-
   if (!search.value) {
     results.value = [];
     showResults.value = false;

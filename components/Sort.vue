@@ -8,8 +8,10 @@ import {
 } from "@/components/ui/select";
 import { sortTypes } from "@/data";
 
-const { modifyQueryParam } = useModifyQueryParam();
+const { getModifiedQueryParam } = useModifyQueryParam();
 const route = useRoute();
+const router = useRouter();
+const TIMEOUT = 300;
 
 const selected = computed(() =>
   route.query?.sort
@@ -19,8 +21,10 @@ const selected = computed(() =>
 
 const handleSort = (value: string) => {
   setTimeout(() => {
-    modifyQueryParam(route.params.type as string, "sort", value);
-  }, 300);
+    router.push(
+      getModifiedQueryParam(route.params.type as string, "sort", value)
+    );
+  }, TIMEOUT);
 };
 </script>
 <template>
