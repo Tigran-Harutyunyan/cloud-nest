@@ -16,7 +16,7 @@ export const useAuthForm = (type: FormType) => {
 
     const apiUrl = computed(() => `/api/user/${isSignUpForm.value ? "register" : "login"}`);
 
-    const { handleSubmit, values: formValues } = useForm({
+    const { validate, handleSubmit, values: formValues } = useForm({
         initialValues: {
             fullName: "",
             email: "",
@@ -25,6 +25,7 @@ export const useAuthForm = (type: FormType) => {
     });
 
     const submitForm = handleSubmit(async (values) => {
+        if (!validate()) return;
         isLoading.value = true;
         errorMessage.value = "";
 

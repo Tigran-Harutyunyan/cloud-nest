@@ -33,6 +33,9 @@ const {
 
 configure({
   validateOnBlur: false,
+  validateOnChange: false,
+  validateOnInput: false,
+  validateOnModelUpdate: false,
 });
 </script>
 
